@@ -12,5 +12,8 @@ void main() {
 
     // Simply verify that a MaterialApp exists
     expect(find.byType(MaterialApp), findsOneWidget);
+    
+    // Verify home page loads
+    expect(find.text('Block Blast'), findsOneWidget);
   });
 }
