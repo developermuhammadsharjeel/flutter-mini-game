@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:math';
-import 'dart:async';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'screens/home_page.dart';
+import 'utils/audio_manager.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(const BlockBlastApp());
+  
+  // Set preferred orientations
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  
+  // Initialize audio manager
+  await AudioManager().initialize();
+  
+  runApp(const ProviderScope(child: BlockBlastApp()));
 }
 
 class BlockBlastApp extends StatelessWidget {
@@ -16,17 +23,25 @@ class BlockBlastApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Block Blast',
+      title: 'Block Blast - Enhanced',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: GoogleFonts.poppinsTextTheme(),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          ),
+        ),
       ),
-      home: const GamePage(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
-      // Enable this to see widget boundaries for debugging
-      // debugShowMaterialGrid: true,
     );
   }
+}
 }
 
 // Model classes for game elements

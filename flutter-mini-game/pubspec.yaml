@@ -1,17 +1,23 @@
 name: block_blast
-description: A block puzzle game
+description: An enhanced Block Blast puzzle game with modern UI and animations
 
 publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  flame: ^1.5.0
+  flutter_riverpod: ^2.0.0
+  lottie: ^2.2.0
+  rive: ^0.10.0
+  confetti: ^0.7.0
+  audioplayers: ^3.0.1
   shared_preferences: ^2.0.15
-  provider: ^6.0.3
+  google_fonts: ^3.0.1
   cupertino_icons: ^1.0.5
 
 dev_dependencies:
@@ -21,3 +27,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/animations/
+    - assets/sfx/
