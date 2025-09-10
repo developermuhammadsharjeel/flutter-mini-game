@@ -42,7 +42,6 @@ class BlockBlastApp extends StatelessWidget {
     );
   }
 }
-}
 
 // Model classes for game elements
 class Block {
